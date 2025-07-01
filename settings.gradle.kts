@@ -8,6 +8,7 @@ pluginManagement {
             }
         }
         mavenCentral()
+        maven { url = uri("https://your-custom-maven-repo.com/maven2") } // For a custom Maven repository
         gradlePluginPortal()
     }
 }
