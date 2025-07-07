@@ -71,6 +71,18 @@ public class ElectricityActivity extends AppCompatActivity {
         list.add(new BillersModel(R.drawable.best_elec_mum, "BEST Mumbai - Brihanmumbai"));
         list.add(new BillersModel(R.drawable.maha_elec_mum, "MSEDCL Mahavitaran - Maharashtra"));
 
+        list.add(new BillersModel(R.drawable.torrent_power_logo, "Torrent Power"));
+        list.add(new BillersModel(R.drawable.adani_elec_mum, "Adani Electricity Mumbai"));
+        list.add(new BillersModel(R.drawable.tata_elec_mum, "Tata Power - Mumbai"));
+        list.add(new BillersModel(R.drawable.best_elec_mum, "BEST Mumbai - Brihanmumbai"));
+        list.add(new BillersModel(R.drawable.maha_elec_mum, "MSEDCL Mahavitaran - Maharashtra"));
+
+        list.add(new BillersModel(R.drawable.torrent_power_logo, "Torrent Power"));
+        list.add(new BillersModel(R.drawable.adani_elec_mum, "Adani Electricity Mumbai"));
+        list.add(new BillersModel(R.drawable.tata_elec_mum, "Tata Power - Mumbai"));
+        list.add(new BillersModel(R.drawable.best_elec_mum, "BEST Mumbai - Brihanmumbai"));
+        list.add(new BillersModel(R.drawable.maha_elec_mum, "MSEDCL Mahavitaran - Maharashtra"));
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new BillersAdapter(list, this, model -> {
             Toast.makeText(this, "Clicked: " + model.getTitle(), Toast.LENGTH_SHORT).show();

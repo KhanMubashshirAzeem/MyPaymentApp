@@ -1,10 +1,10 @@
 package com.example.mypaymentapp.home_screen;
 
-public class RechargeModel {
+public class MoneyTransferModel {
     int iconResId;
     String title;
 
-    public RechargeModel(int iconResId, String title) {
+    public MoneyTransferModel(int iconResId, String title) {
         this.iconResId = iconResId;
         this.title = title;
     }

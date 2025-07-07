@@ -21,21 +21,21 @@
         <include layout="@layout/layout_recharge_bills" />
 
 
-
-
         <include layout="@layout/custom_card_view" />
         <include layout="@layout/custom_card_view" />
         <include layout="@layout/custom_card_view" />
-        <include layout="@layout/custom_card_view" />
-
-        <include layout="@layout/layout_manage_payments" />
-
-
         <View
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="200dp"
             android:background="@color/dark_phonePe"
             />
+        <include layout="@layout/custom_card_view" />
+        <include layout="@layout/custom_card_view" />
+        <include layout="@layout/custom_card_view" />
+
+
+
+
     </LinearLayout>
 
 </ScrollView>

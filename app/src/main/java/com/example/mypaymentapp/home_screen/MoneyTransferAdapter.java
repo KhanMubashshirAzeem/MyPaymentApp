@@ -17,14 +17,14 @@ import java.util.List;
 public class MoneyTransferAdapter extends RecyclerView.Adapter<MoneyTransferAdapter.ViewHolder> {
 
     private Context context;
-    private List<RechargeModel> itemList;
+    private List<MoneyTransferModel> itemList;
     private OnItemClickListener listener;
 
     public interface OnItemClickListener {
-        void onItemClick(RechargeModel item);
+        void onItemClick(MoneyTransferModel item);
     }
 
-    public MoneyTransferAdapter(Context context, List<RechargeModel> itemList, OnItemClickListener listener) {
+    public MoneyTransferAdapter(Context context, List<MoneyTransferModel> itemList, OnItemClickListener listener) {
         this.context = context;
         this.itemList = itemList;
         this.listener = listener;
@@ -40,7 +40,7 @@ public class MoneyTransferAdapter extends RecyclerView.Adapter<MoneyTransferAdap
             titleText = itemView.findViewById(R.id.titleText);
         }
 
-        public void bind(RechargeModel item, OnItemClickListener listener) {
+        public void bind(MoneyTransferModel item, OnItemClickListener listener) {
             iconImage.setImageResource(item.getIconResId());
             titleText.setText(item.getTitle());
             itemView.setOnClickListener(v -> listener.onItemClick(item));

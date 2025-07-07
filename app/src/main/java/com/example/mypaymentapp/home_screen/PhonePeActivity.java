@@ -33,11 +33,11 @@ public class PhonePeActivity extends AppCompatActivity {
         moneyTransferRecyclerView = findViewById(R.id.moneyTransferRecyclerView);
         rechargeBillRecyclerView = findViewById(R.id.rechargeBillRecyclerView);
 
-        List<RechargeModel> itemList = new ArrayList<>();
-        itemList.add(new RechargeModel(R.drawable.to_mobile_svg, "To Mobile\nNumber"));
-        itemList.add(new RechargeModel(R.drawable.bank_transfer_svg, "To Bank and\n self A/c"));
-        itemList.add(new RechargeModel(R.drawable.refer_svg, "Refer & Earn \nUpto $200"));
-        itemList.add(new RechargeModel(R.drawable.check_balance_svg, "Check\nBalance"));
+        List<MoneyTransferModel> itemList = new ArrayList<>();
+        itemList.add(new MoneyTransferModel(R.drawable.to_mobile_svg, "To Mobile\nNumber"));
+        itemList.add(new MoneyTransferModel(R.drawable.bank_transfer_svg, "To Bank and\n self A/c"));
+        itemList.add(new MoneyTransferModel(R.drawable.refer_svg, "Refer & Earn \nUpto $200"));
+        itemList.add(new MoneyTransferModel(R.drawable.check_balance_svg, "Check\nBalance"));
 
         GridLayoutManager layoutManager = new GridLayoutManager(this, 4);
         moneyTransferRecyclerView.setLayoutManager(layoutManager);
