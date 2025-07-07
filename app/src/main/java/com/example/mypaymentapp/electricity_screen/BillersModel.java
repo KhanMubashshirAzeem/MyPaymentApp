@@ -1,4 +1,4 @@
-package com.example.mypaymentapp.electricity;
+package com.example.mypaymentapp.electricity_screen;
 
 public class BillersModel {
     int image;

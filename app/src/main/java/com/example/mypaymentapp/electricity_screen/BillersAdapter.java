@@ -1,4 +1,4 @@
-package com.example.mypaymentapp.electricity;
+package com.example.mypaymentapp.electricity_screen;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -19,6 +19,8 @@ public class BillersAdapter extends RecyclerView.Adapter<BillersAdapter.ViewHold
     private final List<BillersModel> itemList;
     private final Context context;
     private final OnItemClickListener listener;
+
+
 
     public interface OnItemClickListener {
         void onClick(BillersModel model);

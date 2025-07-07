@@ -1,9 +1,9 @@
-package com.example.mypaymentapp.phone_pe_home;
+package com.example.mypaymentapp.home_screen;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
-import androidx.activity.EdgeToEdge;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -11,7 +11,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.mypaymentapp.R;
-import com.example.mypaymentapp.electricity.ElectricityActivity;
+import com.example.mypaymentapp.electricity_screen.ElectricityActivity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class PhonePeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+//        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_phone_pe);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

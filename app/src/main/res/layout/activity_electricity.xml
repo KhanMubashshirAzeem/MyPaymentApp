@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/gray_shade_1"
     android:orientation="vertical"
-    tools:context=".electricity.ElectricityActivity">
+    tools:context=".electricity_screen.ElectricityActivity">
 
 
     <include layout="@layout/electricity_toolbar" />

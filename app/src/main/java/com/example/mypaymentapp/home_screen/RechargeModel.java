@@ -1,4 +1,4 @@
-package com.example.mypaymentapp.phone_pe_home;
+package com.example.mypaymentapp.home_screen;
 
 public class RechargeModel {
     int iconResId;

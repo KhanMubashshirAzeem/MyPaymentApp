@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".phone_pe_home.PhonePeActivity">
+    tools:context=".home_screen.PhonePeActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
+
 
         <include layout="@layout/layout_top_banner" />
 

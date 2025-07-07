@@ -15,10 +15,10 @@
         android:theme="@style/Theme.MyPaymentApp"
         tools:targetApi="31">
         <activity
-            android:name=".electricity.ElectricityActivity"
+            android:name=".electricity_screen.ElectricityActivity"
             android:exported="false" />
         <activity
-            android:name=".phone_pe_home.PhonePeActivity"
+            android:name=".home_screen.PhonePeActivity"
             android:exported="true"
             android:label="@string/title_activity_phone_pe"
             android:theme="@style/Theme.MyPaymentApp.NoActionBar">

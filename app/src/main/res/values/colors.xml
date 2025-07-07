@@ -9,5 +9,9 @@
 
     <color name="color_torrent">#F39A1B</color>
 
+    <color name="yellow">#D5B005</color>
+
+    <color name="invisible">#00FFFFFF</color>
+
 
 </resources>

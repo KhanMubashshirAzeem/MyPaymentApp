@@ -1,4 +1,4 @@
-package com.example.mypaymentapp.electricity;
+package com.example.mypaymentapp.electricity_screen;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +26,8 @@ public class ElectricityActivity extends AppCompatActivity {
     View view;
     RecyclerView recyclerView;
     TextView customer_id, customer_amount;
+    List<BillersModel> list = new ArrayList<>();
+    BillersAdapter adapter;
 
     int id = 12131415;
     int amount = 5400;
@@ -61,13 +63,24 @@ public class ElectricityActivity extends AppCompatActivity {
     }
 
     private void setRecyclerView() {
-        List<BillersModel> list = new ArrayList<>();
         list.add(new BillersModel(R.drawable.torrent_power_logo, "Torrent Power"));
         list.add(new BillersModel(R.drawable.adani_elec_mum, "Adani Electricity Mumbai"));
-        list.add(new BillersModel(R.drawable.tata_elec_mum, "Tata Power Mumbai"));
+        list.add(new BillersModel(R.drawable.tata_elec_mum, "Tata Power - Mumbai"));
+        list.add(new BillersModel(R.drawable.best_elec_mum, "BEST Mumbai - Brihanmumbai"));
+        list.add(new BillersModel(R.drawable.maha_elec_mum, "MSEDCL Mahavitaran - Maharashtra"));
+        list.add(new BillersModel(R.drawable.torrent_power_logo, "Torrent Power"));
+        list.add(new BillersModel(R.drawable.adani_elec_mum, "Adani Electricity Mumbai"));
+        list.add(new BillersModel(R.drawable.tata_elec_mum, "Tata Power - Mumbai"));
+        list.add(new BillersModel(R.drawable.best_elec_mum, "BEST Mumbai - Brihanmumbai"));
+        list.add(new BillersModel(R.drawable.maha_elec_mum, "MSEDCL Mahavitaran - Maharashtra"));
+        list.add(new BillersModel(R.drawable.torrent_power_logo, "Torrent Power"));
+        list.add(new BillersModel(R.drawable.adani_elec_mum, "Adani Electricity Mumbai"));
+        list.add(new BillersModel(R.drawable.tata_elec_mum, "Tata Power - Mumbai"));
+        list.add(new BillersModel(R.drawable.best_elec_mum, "BEST Mumbai - Brihanmumbai"));
+        list.add(new BillersModel(R.drawable.maha_elec_mum, "MSEDCL Mahavitaran - Maharashtra"));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        BillersAdapter adapter = new BillersAdapter(list, this, model -> {
+        adapter = new BillersAdapter(list, this, model -> {
             Toast.makeText(this, "Clicked: " + model.getTitle(), Toast.LENGTH_SHORT).show();
         });
         recyclerView.setAdapter(adapter);
@@ -94,4 +107,5 @@ public class ElectricityActivity extends AppCompatActivity {
             }
         });
     }
+
 }
