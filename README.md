@@ -45,6 +45,10 @@ MyPaymentApp/
 
 ## How to Run This Project
 
+- #### Service Number - 12131415
+- #### Amount - 5400 
+- #### Pin - 0123 
+
 1. **Clone the Repository**
 ```bash
 git clone https://github.com/KhanMubashshirAzeem/MyPaymentApp.git
