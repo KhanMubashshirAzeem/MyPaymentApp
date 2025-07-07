@@ -27,32 +27,32 @@ public class ReceiptActivity extends AppCompatActivity {
 
         date_time = findViewById(R.id.date_time_pay);
         paymentComp = findViewById(R.id.payment_complete_icon);
+        receipt = findViewById(R.id.receipt);
+
+        // Set animation
         PaymentCompleteAnimation();
 
+        // Show payment date & time
         getDateTime();
 
-        receipt = findViewById(R.id.receipt);
+        // Set status message
         String status = getIntent().getStringExtra("status");
         receipt.setText(status);
     }
 
     private void PaymentCompleteAnimation() {
-        ImageView paymentComp = findViewById(R.id.payment_complete_icon);
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.payment_complete_anim);
         paymentComp.startAnimation(animation);
         paymentComp.setVisibility(View.VISIBLE);
     }
 
     private void getDateTime() {
-        // Create date and time formatters with locale
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss z", Locale.getDefault());
 
-        // Format current date and time
         String currentDateString = dateFormat.format(new Date());
         String currentTimeString = timeFormat.format(new Date());
 
-        // Set formatted text to TextViews
         date_time.setText("Time: " + currentTimeString + "\nDate: " + currentDateString);
     }
 }
