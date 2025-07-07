@@ -1,6 +1,10 @@
 package com.example.mypaymentapp;
 
 import android.os.Bundle;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,18 +18,29 @@ public class ReceiptActivity extends AppCompatActivity {
 
     TextView receipt;
     TextView date_time;
+    ImageView paymentComp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_receipt); // This must match the layout file name
+        setContentView(R.layout.activity_receipt);
 
         date_time = findViewById(R.id.date_time_pay);
+        paymentComp = findViewById(R.id.payment_complete_icon);
+        PaymentCompleteAnimation();
+
         getDateTime();
 
-        receipt = findViewById(R.id.receipt); // Make sure this ID matches the XML
+        receipt = findViewById(R.id.receipt);
         String status = getIntent().getStringExtra("status");
         receipt.setText(status);
+    }
+
+    private void PaymentCompleteAnimation() {
+        ImageView paymentComp = findViewById(R.id.payment_complete_icon);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.payment_complete_anim);
+        paymentComp.startAnimation(animation);
+        paymentComp.setVisibility(View.VISIBLE);
     }
 
     private void getDateTime() {

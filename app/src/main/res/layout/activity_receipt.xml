@@ -29,6 +29,7 @@
             android:textStyle="bold" />
 
         <ImageView
+            android:id="@+id/payment_complete_icon"
             android:layout_width="160dp"
             android:layout_height="160dp"
             android:src="@drawable/tick_icon" />
