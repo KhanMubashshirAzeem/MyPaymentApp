@@ -29,9 +29,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".ReceiptActivity"
             android:exported="false" />
     </application>
