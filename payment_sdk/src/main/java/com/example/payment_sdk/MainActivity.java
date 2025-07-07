@@ -1,16 +1,15 @@
 package com.example.payment_sdk;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends Activity {
 
@@ -25,17 +24,11 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            v.setPadding(insets.getInsets(WindowInsetsCompat.Type.systemBars()).left, insets.getInsets(WindowInsetsCompat.Type.systemBars()).top, insets.getInsets(WindowInsetsCompat.Type.systemBars()).right, insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom);
-            return insets;
-        });
-
         editAmount = findViewById(R.id.etAmount);
         editBiller = findViewById(R.id.etBiller);
         btnPay = findViewById(R.id.btnPay);
         progressBar = findViewById(R.id.progress_bar);
 
-        // Get expected values from the intent
         Intent intent = getIntent();
         expectedAmount = intent.getIntExtra("amount", -1);
         expectedId = intent.getIntExtra("id", -1);
@@ -54,30 +47,52 @@ public class MainActivity extends Activity {
                 int enteredId = Integer.parseInt(enteredIdStr);
 
                 if (enteredAmount == expectedAmount && enteredId == expectedId) {
-                    progressBar.setVisibility(View.VISIBLE);
-
-                    PaymentProcessor.process(enteredAmountStr, enteredIdStr, status -> {
-                        progressBar.setVisibility(View.GONE);
-
-                        Intent i = new Intent();
-                        i.setClassName("com.example.mypaymentapp", "com.example.mypaymentapp.ReceiptActivity");
-                        i.putExtra("status", status);
-                        startActivity(i);
-                        finish();
-                    });
-
+                    showPinDialog(enteredAmountStr, enteredIdStr);
                 } else {
-                    if (enteredAmount != expectedAmount) {
-                        editAmount.setError("Amount mismatch");
-                    }
-                    if (enteredId != expectedId) {
-                        editBiller.setError("Service number mismatch");
-                    }
+                    if (enteredAmount != expectedAmount) editAmount.setError("Amount mismatch");
+                    if (enteredId != expectedId) editBiller.setError("Service number mismatch");
+
                     Toast.makeText(this, "Payment Failed", Toast.LENGTH_SHORT).show();
                 }
 
             } catch (NumberFormatException e) {
                 Toast.makeText(this, "Invalid input format", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void showPinDialog(String amount, String biller) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View view = LayoutInflater.from(this).inflate(R.layout.dialog_pin, null);
+        builder.setView(view);
+        AlertDialog dialog = builder.create();
+
+        EditText pin1 = view.findViewById(R.id.pin_one);
+        EditText pin2 = view.findViewById(R.id.pin_two);
+        EditText pin3 = view.findViewById(R.id.pin_three);
+        EditText pin4 = view.findViewById(R.id.pin_four);
+        Button confirmBtn = view.findViewById(R.id.btn_confirm);
+
+        dialog.show();
+
+        confirmBtn.setOnClickListener(v -> {
+            String enteredPin = pin1.getText().toString().trim() + pin2.getText().toString().trim() + pin3.getText().toString().trim() + pin4.getText().toString().trim();
+
+            if (enteredPin.equals("0123")) {
+                dialog.dismiss();
+                progressBar.setVisibility(View.VISIBLE);
+
+                PaymentProcessor.process(amount, biller, status -> {
+                    progressBar.setVisibility(View.GONE);
+
+                    Intent i = new Intent();
+                    i.setClassName("com.example.mypaymentapp", "com.example.mypaymentapp.ReceiptActivity");
+                    i.putExtra("status", status);
+                    startActivity(i);
+                    finish();
+                });
+            } else {
+                Toast.makeText(this, "Incorrect PIN", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -3,5 +3,9 @@
     <color name="color_torrent">#F39A1B</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="color_phone_pe">#6239B6</color>
+
+    <color name="gray_shade_1">#e6e6e6</color>
+
 
 </resources>
