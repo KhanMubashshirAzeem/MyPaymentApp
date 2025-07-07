@@ -9,26 +9,65 @@
     android:layout_margin="32dp"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="24dp"
+        android:src="@drawable/torrent_power_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12sp"
+        android:text="torrent"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintTop_toTopOf="@+id/logo" />
+
+    <View
+        android:layout_width="100dp"
+        android:layout_height="2dp"
+        android:background="#F39A1B"
+        android:layout_marginStart="12sp"
+
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12sp"
+        android:text="power"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toBottomOf="@+id/logo"
+        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
     <EditText
         android:id="@+id/etAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
-        android:background="@android:color/transparent"
-        android:hint="Enter Amount"
+        android:background="@drawable/searchview"
+        android:hint="Enter Service Number"
         android:inputType="number"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/logo" />
 
     <EditText
         android:id="@+id/etBiller"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
-        android:background="@android:color/transparent"
-        android:hint="Enter Biller Name"
+        android:background="@drawable/searchview"
+        android:hint="Enter amount"
+        android:inputType="number"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +80,7 @@
         android:layout_margin="24dp"
         android:text="Pay Now"
         android:padding="12dp"
+        android:backgroundTint="#F39A1B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

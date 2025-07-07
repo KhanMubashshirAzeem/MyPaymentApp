@@ -15,8 +15,13 @@
         android:theme="@style/Theme.MyPaymentApp"
         tools:targetApi="31">
         <activity
-            android:name=".HomeActivityPhonePe"
-            android:exported="true">
+            android:name=".electricity.ElectricityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".phone_pe_home.PhonePeActivity"
+            android:exported="true"
+            android:label="@string/title_activity_phone_pe"
+            android:theme="@style/Theme.MyPaymentApp.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,11 +29,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ReceiptActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="false"/>
+            android:name=".ReceiptActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
