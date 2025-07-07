@@ -2,7 +2,6 @@ package com.example.mypaymentapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.payment_sdk.PaymentSDKActivity;
+import com.example.payment_sdk.PaymentProcessor;
 
 public class MainFragment extends Fragment {
 
@@ -30,7 +29,7 @@ public class MainFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_main, container, false); // Using the same layout
+        return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
     @Override
@@ -42,7 +41,7 @@ public class MainFragment extends Fragment {
         btnPay = view.findViewById(R.id.btnPay);
         progressBar = view.findViewById(R.id.progress_bar);
 
-        // Get expected data from arguments passed by parent activity
+        // Retrieve values from arguments
         Bundle args = getArguments();
         if (args != null) {
             expectedAmount = args.getInt("amount", -1);
@@ -64,13 +63,17 @@ public class MainFragment extends Fragment {
 
                 if (enteredAmount == expectedAmount && enteredId == expectedId) {
                     progressBar.setVisibility(View.VISIBLE);
-                    new Handler().postDelayed(() -> {
+
+                    // Call PaymentProcessor directly instead of opening another Activity
+                    PaymentProcessor.process(enteredAmountStr, enteredIdStr, status -> {
                         progressBar.setVisibility(View.GONE);
-                        Intent payIntent = new Intent(getActivity(), PaymentSDKActivity.class);
-                        payIntent.putExtra("amount", enteredAmountStr);
-                        payIntent.putExtra("biller", enteredIdStr);
-                        startActivityForResult(payIntent, 101);
-                    }, 2000);
+
+                        Intent i = new Intent(getActivity(), ReceiptActivity.class);
+                        i.putExtra("status", status);
+                        startActivity(i);
+                        requireActivity().finish();
+                    });
+
                 } else {
                     if (enteredAmount != expectedAmount) {
                         editAmount.setError("Amount mismatch");
@@ -85,17 +88,5 @@ public class MainFragment extends Fragment {
                 Toast.makeText(getContext(), "Invalid input format", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 101 && resultCode == getActivity().RESULT_OK && data != null) {
-            String status = data.getStringExtra("status");
-            Intent i = new Intent(getActivity(), ReceiptActivity.class);
-            i.putExtra("status", status);
-            startActivity(i);
-            getActivity().finish();
-        }
     }
 }
